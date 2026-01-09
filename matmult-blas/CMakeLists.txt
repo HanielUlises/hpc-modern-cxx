@@ -6,5 +6,5 @@ set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
 find_package(BLAS REQUIRED)
 
-add_executable(naive_vs_blas main.cpp)
+add_executable(naive_vs_blas matmul.cpp)
 target_link_libraries(naive_vs_blas PRIVATE BLAS::BLAS)
