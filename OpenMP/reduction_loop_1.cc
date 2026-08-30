@@ -2,11 +2,9 @@
 #include <omp.h>
 
 int main(void) {
-    #pragma omp parallel for collapse(2)
-    for(int x = -1; x <= 1; x++) 
-        for(int y = - 1; y <=1; y++) 
-            printf("Thread %d: (%d, %d)\n", omp_get_thread_num(), x, y);
-            
+    #pragma omp parallel for 
+    for(int i = 0; i < 4 * omp_get_num_threads(); i++) 
+        printf("Thread %d, i = %d\n", omp_get_thread_num(), i);
     
     return 0;
 }
