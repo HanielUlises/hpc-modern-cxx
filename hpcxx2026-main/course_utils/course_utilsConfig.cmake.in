@@ -1,0 +1,7 @@
+@PACKAGE_INIT@
+set(course_utils @PROJECT_VERSION_MAJOR@)
+set(course_utils_VERSION_MINOR @PROJECT_VERSION_MINOR@)
+set(course_utils_PATCH_LEVEL @PROJECT_VERSION_PATCH@)
+set(CMAKE_MODULE_PATH @PROJECT_SOURCE_DIR@/cmake @CMAKE_MODULE_PATH@)
+include("${CMAKE_CURRENT_LIST_DIR}/course_utilsTargets.cmake")
+
