@@ -1,0 +1,19 @@
+cmake_minimum_required(VERSION 3.30 FATAL_ERROR)
+set (CMAKE_CXX_EXTENSIONS OFF)
+set (CMAKE_CXX_STANDARD 23)
+set (CMAKE_CXX_STANDARD_REQUIRED ON)
+set (CMAKE_POSITION_INDEPENDENT_CODE ON)
+set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
+
+if (NOT CMAKE_IMPORT_STD_MODULE_DIR)
+    set(CMAKE_IMPORT_STD_MODULE_DIR $ENV{CMAKE_IMPORT_STD_MODULE_DIR})
+endif()
+include(${CMAKE_IMPORT_STD_MODULE_DIR}/EnableCxxImportStd.cmake)
+
+project(2_any LANGUAGES CXX)
+
+set(CMAKE_CXX_MODULE_STD 1)
+
+add_executable(geom main.cc)
+target_sources(geom PUBLIC FILE_SET CXX_MODULES FILES Point.ixx Circle.ixx Polygon.ixx Triangle.ixx)
+

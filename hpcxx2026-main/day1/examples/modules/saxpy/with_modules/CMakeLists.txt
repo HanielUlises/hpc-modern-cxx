@@ -1,0 +1,23 @@
+cmake_minimum_required(VERSION 3.30 FATAL_ERROR)
+set (CMAKE_CXX_EXTENSIONS OFF)
+set (CMAKE_CXX_STANDARD 23)
+set (CMAKE_CXX_STANDARD_REQUIRED ON)
+set (CMAKE_POSITION_INDEPENDENT_CODE ON)
+set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
+
+if (NOT CMAKE_IMPORT_STD_MODULE_DIR)
+    set(CMAKE_IMPORT_STD_MODULE_DIR $ENV{CMAKE_IMPORT_STD_MODULE_DIR})
+endif()
+include(${CMAKE_IMPORT_STD_MODULE_DIR}/EnableCxxImportStd.cmake)
+
+project(use_saxpy-example CXX)
+
+set(CMAKE_CXX_MODULE_STD 1)
+
+add_executable(use_saxpy usesaxpy.cc)
+target_sources(use_saxpy
+  PUBLIC
+    FILE_SET saxpy_module TYPE CXX_MODULES FILES
+    saxpy.ixx
+)
+
